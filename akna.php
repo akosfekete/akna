@@ -63,8 +63,6 @@
 ?>
 
 <?php include("header.php"); ?>
-        <h5> Inaktív: <?= $_SESSION['megnyomottgombok'] ?><br> </h5>
-        <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
 
         <div class="buttons" id="mezo<?= $_SESSION['mezomeret'] ?>">
             <?php 
@@ -190,6 +188,8 @@
                     }
                 }
             ?>
+            <h5> Inaktív: <?= $_SESSION['megnyomottgombok'] ?><br> </h5>
+            <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
         </div>
         <br>
     <?php include("footer.php"); ?>
