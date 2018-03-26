@@ -1,0 +1,79 @@
+@keyframes buttons {
+    from {background-color: rgb(221, 219, 101);  }
+    to {background-color: tomato; }
+}
+
+div.buttons {
+    background-color: rgb(107, 75, 180);
+    overflow: visible;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgb(42, 10, 102);
+    padding: 5px;
+ }
+
+ div.buttons#mezo10 {
+     height: 300px;
+     width: 300px;
+ }
+
+ div.buttons#mezo10 img {
+    height: 300px;
+    width: 300px;
+ }
+
+ div.buttons#mezo15 {
+     height: 450px;
+     width: 450px;
+ }
+
+ div.buttons#mezo20 {
+     height: 600px;
+     width: 600px;
+ }
+
+ div.buttons a.minebutton {
+     background-color: red;
+     color: red;
+ }
+ 
+ div.buttons a.pressedbutton {
+     background-color: lightgray;
+     color: black;
+ }
+
+ div.buttons a.pressedemptybutton {
+     background-color: lightgray;   
+     color: lightgray;
+ }
+ 
+ div.buttons a {
+     width: 22px;
+     height: 22px;
+     line-height: 18px;
+     background-color: rgb(221, 219, 101);
+     margin: 1px;
+     border: 1px solid black;
+     border-radius: 4px;
+     padding: 2px;
+     text-decoration: none;
+     display: inline-block;
+     text-align: center;
+     font-size: 10px;
+ }
+ 
+
+ div.buttons a.activebutton {
+     color: rgb(221, 219, 101);
+ }
+ 
+
+ div.buttons a.activebutton:hover {
+    background-color: tomato;
+    animation-name: buttons;
+    animation-duration: 0.05s;
+    animation-timing-function: linear;
+    margin: 0px;
+    padding: 3px;
+ }
+ 

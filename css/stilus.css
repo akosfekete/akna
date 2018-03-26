@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Exo|Montserrat|Quicksand&subset=latin-ext');
+@keyframes nav_menu {
+    from {text-shadow: none;}
+    to {text-shadow: 0 0 3px rgb(221, 219, 101);}
+}
+body {
+    background-color: rgb(216, 202, 245);
+}
+
+main {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(109, 84, 199);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+header, footer {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    overflow: hidden;
+    text-transform: uppercase;
+    background-color: rgb(71, 52, 156);
+    border-radius: 5px 5px 5px 0;
+    /*color: rgb(216, 202, 245);*/
+    color: rgb(221, 219, 101);
+}
+
+footer {
+    border-radius: 5px;
+}
+
+header p {
+    margin-top: none;
+    text-shadow: 0 0 5px rgb(216, 202, 245);
+    letter-spacing: 10px;
+}
+
+header a {
+    float: right;
+    font-size: 12px;
+    text-decoration: none;
+    color: rgb(221, 219, 101);
+    margin: 15px;
+    letter-spacing: 1px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    font-size: 14px;
+    text-align: left;
+    margin: 20px;
+}
+
+nav {
+    margin-top: 0px;
+    width: 380px;
+}
+
+nav ul {
+    list-style-type: none;
+    overflow: auto;
+    margin: 0px;
+    background-color: rgb(71, 52, 156);
+    border-radius: 0 0 8px 8px;
+}
+nav ul li {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    float: left;
+}
+nav ul li a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+    color:rgb(221, 219, 101);
+    font-family: 'Exo', sans-serif;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+nav ul li a:hover {
+    text-shadow: 0 0 3px rgb(221, 219, 101);
+    animation-name: nav_menu;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+}
+
+nav ul li a#active {
+    text-shadow: 0 0 5px rgb(216, 202, 245);
+    animation: none;
+}
+
+article {
+    width: 80%;
+    /*min-height: 60%; így kéne, de firefos-ban nem jó*/
+    min-height: 600px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%; /*lehet, hogy itt pixeles érték jobb lenne */
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(221, 219, 101);
+    text-align: justify;
+}
+
+article p {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+}
+
+div, table {
+    width: 70%;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 30px;
+    background-color: rgb(127, 100, 224);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.096), 0 6px 20px 0 rgba(0, 0, 0, 0.103);
+}
+
+div.leiras:nth-child(even) {
+    margin-left: 25%;
+    margin-right: auto;
+}
+div.leiras:nth-child(odd) {
+    margin-right: 25%;
+    margin-left: auto;
+}
+div.leiras ol#kepek {
+    float: right;
+    position: relative;
+    bottom: 150px;
+    right: 230px;
+}
+
+div.leiras ol#kepek li img {
+    position: relative;
+    top: 7px;
+    left: 15px;
+}
+
+aside#kepek {
+    position: relative;
+    left: 500px;
+    bottom: 100px;
+    background-color: aqua;
+    width: 200px;
+
+}
+aside#kepek img {
+    float: left;
+}
+aside#videoleiras {
+    width: 60%;
+}
+aside#video {
+    position: relative;
+    right: 80px;
+    bottom: 210px;
+}
+aside#video video {
+    float: right;
+}

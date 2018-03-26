@@ -1,0 +1,65 @@
+@media screen {
+    table {
+        background-color: rgb(71, 52, 156);
+        color: rgb(221, 219, 101);
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        padding: 10px;
+        border-bottom: 2px solid rgb(221, 219, 101);
+    }
+    
+    th {
+        height: 50px;
+    }
+    
+    td {
+        text-align: center;
+        height: 25px;
+        font-size: 15px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: rgb(92, 70, 172);
+    }
+    
+    tr:hover {
+        background-color: rgb(109, 82, 207);
+    }
+}
+
+
+@media print {
+   
+    table {
+        background-color: white;
+        color: black;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        font-family: 'Courier New', Courier, monospace;
+        box-shadow: none;
+    }
+    table, td, th {
+        border: 2px solid black;
+    }
+
+    td, th {
+        padding: 5px;
+    }
+    
+    th {
+        height: 30px;
+    }
+    
+    td {
+        text-align: center;
+        height: 25px;
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,49 @@
+input[type=text] {
+    width: 90%;
+    padding: 6px;
+    margin: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: none;
+    background-color: rgb(228, 223, 238);
+}
+.kotelezo {
+    color: rgb(221, 46, 46);
+    text-shadow: 0 0 5px rgb(39, 28, 85);
+}
+input[type=text]:focus {
+    background-color: white;
+    
+}
+
+input[type="submit"] {
+    background-color: rgb(228, 223, 238);
+    padding: 6px;
+    margin: 8px;
+    border-radius: 4px;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(221, 219, 101);
+}
+
+form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: aqua*/
+}
+
+select {
+    border: none;
+    width: 120px;
+    padding: 6px 6px;
+    border-radius: 4px;
+    background-color: rgb(228, 223, 238);
+    margin: 8px;
+}
+
+label {
+    margin: 8px;
+}
