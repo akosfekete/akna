@@ -5,6 +5,7 @@
 }
 body {
     background-color: rgb(216, 202, 245);
+    background-image: url("../img/fabric.png")
 }
 
 main {
@@ -15,6 +16,7 @@ main {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: url("../img/purple-triangles.png");
 }
 header, footer {
     text-align: center;
@@ -23,13 +25,12 @@ header, footer {
     overflow: hidden;
     text-transform: uppercase;
     background-color: rgb(71, 52, 156);
-    border-radius: 5px 5px 5px 0;
     /*color: rgb(216, 202, 245);*/
     color: rgb(221, 219, 101);
 }
 
-footer {
-    border-radius: 5px;
+header {
+    border-radius: 5px 5px 5px 0;
 }
 
 header p {
@@ -51,15 +52,37 @@ header a:hover {
     text-decoration: underline;
 }
 
-footer p {
+footer {
+    border-radius: 5px 5px 5px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+footer p, footer a {
     font-size: 14px;
     text-align: left;
     margin: 20px;
+    letter-spacing: 1px;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 12px;
+    color: rgb(221, 219, 101);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 nav {
     margin-top: 0px;
     width: 380px;
+    position: sticky;
+    top: 0;
 }
 
 nav ul {
@@ -84,6 +107,7 @@ nav ul li a {
     font-family: 'Exo', sans-serif;
     text-transform: uppercase;
     border-radius: 3px;
+    position: sticky;
 }
 nav ul li a:hover {
     text-shadow: 0 0 3px rgb(221, 219, 101);
@@ -99,7 +123,7 @@ nav ul li a#active {
 
 article {
     width: 80%;
-    /*min-height: 60%; így kéne, de firefos-ban nem jó*/
+    min-height: 60%; /*így kéne, de firefos-ban nem jó*/
     min-height: 600px;
     padding: 10px;
     margin-left: auto;
@@ -126,6 +150,10 @@ div, table {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.096), 0 6px 20px 0 rgba(0, 0, 0, 0.103);
 }
 
+div.leiras, div.fooldal {
+    background-image: url("../img/seamless-paper-purple.png");
+}
+
 div.leiras:nth-child(even) {
     margin-left: 25%;
     margin-right: auto;
@@ -147,6 +175,44 @@ div.leiras ol#kepek li img {
     left: 15px;
 }
 
+div.fooldal {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+div.fooldal#gombok {
+    height: 10%;
+    width: 45%;
+    background: inherit;
+    box-shadow: none;
+}
+
+div.fooldal a {
+    margin: 5px;
+    padding: 5px;
+    background-color: rgb(221, 219, 101);
+    /*background-image: url("../img/yellow-triangles.png");*/
+    height: 40px;
+    width: 100px;
+    padding: 10px;
+    line-height: 40px;
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(71, 52, 156);
+    border-radius: 5px;
+    transition: height 0.5s;
+}
+
+div.fooldal a:hover {
+    height: 80px;
+}
+
 aside#kepek {
     position: relative;
     left: 500px;
@@ -164,7 +230,7 @@ aside#videoleiras {
 aside#video {
     position: relative;
     right: 80px;
-    bottom: 210px;
+    bottom: 190px;
 }
 aside#video video {
     float: right;

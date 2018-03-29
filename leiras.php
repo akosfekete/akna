@@ -1,6 +1,6 @@
 ﻿<?php include("header.php"); ?>
 
-                <div class="leiras">
+               <div class="leiras">
                     Az aknakereső egy számítógépes játék, melynek célja a mezőn lévő összes akna megtalálása, illetve azok elkerülése. 
                     Az aknakereső alapvetően logikai játék, de bármely játékmenetben előfordulhat olyan szituáció is, amelyben a helyes 
                     megoldás a szerencsén múlik. Egyszemélyes játék, de létezik kétszemélyes változata is, annak szabályai és stratégiái 
@@ -16,9 +16,9 @@
                     </ol>
                     <ol id="kepek">
                         <li><img src="./img/gomb_aktiv.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
-                        <li><img src="./img/gomb_aktiv.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
-                        <li><img src="./img/gomb_aktiv.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
-                        <li><img src="./img/gomb_aktiv.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
+                        <li><img src="./img/gomb_felfedett_akna.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
+                        <li><img src="./img/gomb_felfedett.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
+                        <li><img src="./img/gomb_akna.png" alt="Aktív állapot" width="30" height="30" class="gombkep"></li>
                     </ol>                    
                     
                 </div>
@@ -30,25 +30,24 @@
                 </div>
                 <div class="leiras">
                     <aside id="videoleiras">
-                            Az első kattintáskor (a játék indításakor) minden esetben aknamentes mezőt tárunk fel, a következő lépéstől kezdve 
-                            azonban a feltáruló számok ismeretében, logikai úton, illetve időnként szerencsével tudunk továbbhaladni. A program 
-                            folyamatosan jelzi a még megjelöletlen aknák számát, illetve az eltelt időt. A játék célja: teljesíteni a táblát a 
+                            A játék során a kattintásokra feltáruló számok ismeretében, logikai úton, illetve időnként szerencsével tudunk továbbhaladni. A program 
+                            folyamatosan jelzi a még megjelöletlen aknák, valamint a lépések (azaz kattintásook) számát. A játék célja: teljesíteni a táblát a 
                             lehető legrövidebb idő alatt. Ha aknára kattintunk, az adott mező "felrobban", tehát a játék véget ér, s az adott 
                             menetet elvesztettük. Győzelemmel kizárólag abban az esetben fejeződik be a játék, ha felfedtünk minden olyan mezőt, 
-                            amely alatt nincs akna. A győzelem elérése nem függ attól, hogy hány aknát jelöltünk meg zászlóval vagy kérdőjellel, 
-                            illetve hogy használtuk-e egyáltalán ezeket a segítségeket.
+                            amely alatt nincs akna. A győzelem elérése nem függ attól, hogy hány aknát jelöltünk meg,  
+                            illetve hogy használtuk-e egyáltalán ezt a segítséget.
                     </aside>
                     <aside id="video">
                         <video width="170" height="170" autoplay loop>
-                            <source src="img/akna1.webm">
+                            <source src="img/akna2.webm">
                         </video>
                     </aside>
                     
                 </div> 
                 <div class="leiras">
-                    Majd ide jönnek a táblaméretek, a lehetséges beállítások. Az itteni megvalósítás működését is le kéne írni. Az előző leírás
-                    sem jó.ek, a lehetséges beállek, a lehetséges beállek, a lehetséges beállek, a lehetséges beállek, a lehetséges beállek, a lehetséges beáll
-                    ek, a lehetséges beállek, a lehetséges beállek, a lehetséges beáll
+                    Az aknakereső pálya paraméterezése a "Játék" menüpont alól elérhető paraméterező űrlap segítségével valósítható meg. Három mező választható:
+                    10x10, 15x15, illetve 20x20-as rács elrendezésben. Ezen felül a játék nehézsége is állítható 3 lépésben. 
                 </div>
+                
                 
             <?php include("footer.php"); ?>

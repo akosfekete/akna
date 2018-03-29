@@ -1,5 +1,6 @@
-input[type=text] {
+input[type=text], input[type=email] {
     width: 90%;
+    height: 35px;
     padding: 6px;
     margin: 8px;
     box-sizing: border-box;
@@ -8,20 +9,30 @@ input[type=text] {
     background-color: rgb(228, 223, 238);
 }
 .kotelezo {
-    color: rgb(221, 46, 46);
+    color: rgb(228, 79, 79);
     text-shadow: 0 0 5px rgb(39, 28, 85);
 }
-input[type=text]:focus {
+input[type=text]:focus, input[type=email]:focus {
     background-color: white;
     
 }
 
 input[type="submit"] {
+    width: 90%;
+    height: 35px;
     background-color: rgb(228, 223, 238);
     padding: 6px;
     margin: 8px;
     border-radius: 4px;
     border: none;
+}
+
+select {
+    height: 35px;
+}
+
+select:hover {
+    background-color: rgb(221, 219, 101);
 }
 
 input[type="submit"]:hover {

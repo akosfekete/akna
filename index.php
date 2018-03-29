@@ -1,18 +1,21 @@
 ﻿<?php include("header.php"); ?>
 
-                    The player is initially presented with a grid of undifferentiated squares. Some randomly selected squares, unknown 
-                    to the player, are designated to contain mines. Typically, the size of the grid and the number of mines are set in 
-                    advance by the user, either by entering the numbers or selecting from defined skill levels, depending on the implementations. 
-                    (In the Microsoft variant, this is limited to 30 times 24 with 667 mines.)
-                    The game is played by revealing squares of the grid by clicking or otherwise indicating each square. 
-                    If a square containing a mine is revealed, the player loses the game. If no mine is revealed, a digit is 
-                    instead displayed in the square, indicating how many adjacent squares contain mines; if no mines are adjacent, 
-                    the square becomes blank, and all adjacent squares will be recursively revealed. The player uses this information 
-                    to deduce the contents of other squares, and may either safely reveal each square or mark the square as containing a mine.
-                    In some versions, a question mark may be placed in an unrevealed square to serve as an aid to logical deduction. 
-                    Implementations may also allow players to quickly "clear around" a revealed square once the correct number of mines 
-                    have been flagged around it. The game is won when all mine-free squares are revealed, because all mines have been located.
-                    Some versions of Minesweeper will set up the board by never placing a mine on the first square revealed.[1] Minesweeper
-                    for versions of Windows protects the first square revealed; in Windows 7, players may elect to replay a board, in which case the first square may no longer be protected.
+            <div class="fooldal" id="gombok">
+                        <a href="jatek.php">játék</a>
+                        <a href="leiras.php">leírás</a>
+                        <a href="toplista.php">toplista</a>
+                        <a href="reg.php">regisztráció</a>
+                    </div>
+
+                    <div class="fooldal">
+                        Az aknakereső egy népszerű egyszemélyes logikai játék, amely szinte minden mai személyi számítógépen megtalálható. 
+                        A játék első változatai a 80-as évek elején jelentek meg, ma ismert formájában 1990-ben, a Microsoft cég Windows Entertainment Pack 
+                        nevű játékgyűjteményének részeként látott napvilágot. A játék (a pasziánsszal egyetemben) a Windows 3.1 kiadása óta 
+                        része az operációs rendszernek, így felhasználók milliói játsszák rendszeresen. A legtöbb számítógépes játékkal 
+                        ellentétben az aknakereső során a játékosnak sokkal inkább az eszére, semmint ügyességére kell hagyatkoznia. 
+                        A játék elé egyszerű ahhoz, hogy könnyedén meg lehessen érteni a szabályokat, ugyanakkor elég komplex ahhoz, hogy
+                        ne váljon gyorsan unalmassá. A későbbiekben látni fogjuk, hogy a játék még egy számítógép számára is kellően bonyolult, 
+                        jelenleg nem ismert hatékony algoritmus, amely képes lenne hibátlanul megoldani minden aknakereső-táblát.
+                    </div>
                     
 <?php include("footer.php"); ?>

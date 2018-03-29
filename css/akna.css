@@ -5,7 +5,6 @@
 
 div.buttons {
     background-color: rgb(107, 75, 180);
-    overflow: visible;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid rgb(42, 10, 102);
@@ -15,11 +14,6 @@ div.buttons {
  div.buttons#mezo10 {
      height: 300px;
      width: 300px;
- }
-
- div.buttons#mezo10 img {
-    height: 300px;
-    width: 300px;
  }
 
  div.buttons#mezo15 {
@@ -50,7 +44,7 @@ div.buttons {
  div.buttons a {
      width: 22px;
      height: 22px;
-     line-height: 18px;
+     line-height: 22px;
      background-color: rgb(221, 219, 101);
      margin: 1px;
      border: 1px solid black;
@@ -60,6 +54,8 @@ div.buttons {
      display: inline-block;
      text-align: center;
      font-size: 10px;
+     font-family: 'Exo', sans-serif;
+     font-weight: bolder;
  }
  
 
@@ -70,8 +66,9 @@ div.buttons {
 
  div.buttons a.activebutton:hover {
     background-color: tomato;
+    color: tomato;
     animation-name: buttons;
-    animation-duration: 0.05s;
+    animation-duration: 0.08s;
     animation-timing-function: linear;
     margin: 0px;
     padding: 3px;

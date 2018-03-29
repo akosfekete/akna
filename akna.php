@@ -98,7 +98,7 @@
                     if($i == $buttonPressed) {
                         
                         $text = $_SESSION['buttontext'][$buttonPressed];
-                        echo "<a href=\"akna.php?button=$i\" class=\"pressedbutton\">$text</a>";
+                        echo "<a  class=\"pressedbutton\">$text</a>";
 
                         $_SESSION['buttons'][$i] = true;
 
@@ -115,7 +115,7 @@
                     else {
                         $text = $_SESSION['buttontext'][$i];
                         if($_SESSION['mines'][$i]) {
-                            echo "<a href=\"akna.php?button=$i\" class=\"minebutton\">$text</a>";
+                            echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";
                         }
                         else{
                             echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";    
@@ -188,8 +188,9 @@
                     }
                 }
             ?>
+           
+        </div>
             <h5> Inaktív: <?= $_SESSION['megnyomottgombok'] ?><br> </h5>
             <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
-        </div>
         <br>
     <?php include("footer.php"); ?>

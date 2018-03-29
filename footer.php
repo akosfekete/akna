@@ -1,6 +1,7 @@
 </article>
             <footer>
-                    <p>Ez lesz a lábléc.</p>
+                <p>Fekete Ákos, QCW090</p>
+                <a href="index.html">Főoldal</a>
             </footer>
         </main>
     </body>
