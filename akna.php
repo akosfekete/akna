@@ -25,9 +25,11 @@
         $_SESSION['lepesek'] = 0;
 
         //Összesen hény gomb van
-        $meret = $_SESSION['mezomeret'] ** 2;
+        $_SESSION['meret'] = $_SESSION['mezomeret'] ** 2;
 
-        for($i=0; $i<$meret; $i++) {
+        $_SESSION['pontszam'] = 0;
+
+        for($i=0; $i<$_SESSION['meret']; $i++) {
             $_SESSION['mines'][$i] = false;
             $_SESSION['buttons'][$i] = false;
             $_SESSION['buttontext'][$i] = ".";
@@ -35,13 +37,13 @@
         
         //random elhelyezi az aknákat. biztosra megy, hogy nincs két ugyanolyan szám(akkor eggyel kevesebb akna lenne)
         for($i=0; $i<$_SESSION['mineNr']; $i++) { 
-            $place = rand(0,$meret-1);
+            $place = rand(0,$_SESSION['meret']-1);
             if($_SESSION['mines'][$place] == false) {
                 $_SESSION['mines'][$place] = true;
             }
             else {
                 while($_SESSION['mines'][$place] == true) {
-                    $place = rand(0,$meret-1);
+                    $place = rand(0,$_SESSION['meret']-1);
                 }
                 $_SESSION['mines'][$place] = true;
             }
@@ -74,9 +76,12 @@
                     $_SESSION['buttons'][$buttonPressed] = true;
                 }
 
-                $meret = $_SESSION['mezomeret'] ** 2;
+                $meret = $_SESSION['mezomeret'] ** 2; //erre már van session változó, azt kéne használni
 
                 for($i=0; $i<$meret; $i++) {
+                    $text = $_SESSION['buttontext'][$i];
+                    $color = "black";
+
                     if($_SESSION['isfirstrun']) {
                         break;
                     }
@@ -86,36 +91,42 @@
                     }
                     if($_SESSION['megnyomottgombok'] == $meret-$_SESSION['mineNr']) { 
                         switch($_SESSION['mezomeret']) {
-                            case 10 : echo "<img src=\"./img/winner.jpg\" alt=\"you're winner\" height=\"300\" width=\"300\">"; break;
-                            case 15 : echo "<img src=\"./img/winner.jpg\" alt=\"you're winner\" height=\"450\" width=\"450\">"; break;
-                            case 20 : echo "<img src=\"./img/winner.jpg\" alt=\"you're winner\" height=\"600\" width=\"600\">"; break;
+                            case 10 : echo "<img src=\"./img/winner.png\" alt=\"you're winner\" height=\"300\" width=\"300\">"; break;
+                            case 15 : echo "<img src=\"./img/winner.png\" alt=\"you're winner\" height=\"450\" width=\"450\">"; break;
+                            case 20 : echo "<img src=\"./img/winner.png\" alt=\"you're winner\" height=\"600\" width=\"600\">"; break;
                         }
+                        
                         break;
                         
                     }   
                                   
                     checkButtons($buttonPressed);
+
                     if($i == $buttonPressed) {
                         
                         $text = $_SESSION['buttontext'][$buttonPressed];
-                        echo "<a  class=\"pressedbutton\">$text</a>";
+                        if($text == '.') {
+                            echo "<a  class=\"pressedemptybutton\">$text</a>";
+                        }
+                        else {
+                            echo "<a  class=\"pressedbutton color$text\">$text</a>";
+                        }
+                        
 
                         $_SESSION['buttons'][$i] = true;
 
                     }
                     elseif($_SESSION['buttons'][$i]) {
-                        $text = $_SESSION['buttontext'][$i];
                         if($text == '.') {
                             echo "<a  class=\"pressedemptybutton\" >$text</a>";    
                         }
                         else {
-                            echo "<a  class=\"pressedbutton\" >$text</a>";
+                            echo "<a  class=\"pressedbutton color$text\" >$text</a>";
                         }
                     }
                     else {
-                        $text = $_SESSION['buttontext'][$i];
                         if($_SESSION['mines'][$i]) {
-                            echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";
+                            echo "<a href=\"akna.php?button=$i\" class=\"minebutton\">$text</a>";
                         }
                         else{
                             echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";    
@@ -127,7 +138,6 @@
                 }
                 if($_SESSION['isfirstrun']) {
                     for($i=0; $i<$meret; $i++) {
-                        $text = $_SESSION['buttontext'][$i];
                         echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";
                         if(($i+1) % $_SESSION['mezomeret'] == 0) {
                             echo "\n";
@@ -177,7 +187,6 @@
                                         $_SESSION['buttons'][$n] = true;
                                         $_SESSION['megnyomottgombok']++;
                                         checkButtons($n);
-                                        //echo "$n ";
                                     }
                                 }
                             }
@@ -190,7 +199,7 @@
             ?>
            
         </div>
-            <h5> Inaktív: <?= $_SESSION['megnyomottgombok'] ?><br> </h5>
+            <h5> Aktív: <?= $_SESSION['meret'] - $_SESSION['megnyomottgombok'] ?><br> </h5>
             <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
         <br>
     <?php include("footer.php"); ?>

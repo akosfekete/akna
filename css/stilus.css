@@ -8,7 +8,7 @@ body {
     background-image: url("../img/fabric.png")
 }
 
-main {
+div#container {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -25,7 +25,6 @@ header, footer {
     overflow: hidden;
     text-transform: uppercase;
     background-color: rgb(71, 52, 156);
-    /*color: rgb(216, 202, 245);*/
     color: rgb(221, 219, 101);
 }
 
@@ -44,7 +43,7 @@ header a {
     font-size: 12px;
     text-decoration: none;
     color: rgb(221, 219, 101);
-    margin: 15px;
+    margin: 15px 15px 15px 0;
     letter-spacing: 1px;
 }
 
@@ -61,7 +60,6 @@ footer {
 
 footer p, footer a {
     font-size: 14px;
-    text-align: left;
     margin: 20px;
     letter-spacing: 1px;
 }
@@ -80,7 +78,7 @@ footer a:hover {
 
 nav {
     margin-top: 0px;
-    width: 380px;
+    width: 360px;
     position: sticky;
     top: 0;
 }
@@ -121,37 +119,35 @@ nav ul li a#active {
     animation: none;
 }
 
-article {
+main {
     width: 80%;
     min-height: 60%; /*így kéne, de firefos-ban nem jó*/
     min-height: 600px;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding: 1%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1%; /*lehet, hogy itt pixeles érték jobb lenne */
+    margin-top: none;
     font-family: 'Montserrat', sans-serif;
     color: rgb(221, 219, 101);
     text-align: justify;
 }
 
-article p {
+main p {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 70px;
 }
 
-div, table {
+div.leiras, div.fooldal, div.buttons {
+    background-image: url("../img/seamless-paper-purple.png");
     width: 70%;
     border-radius: 4px;
     padding: 20px;
     margin: 30px;
     background-color: rgb(127, 100, 224);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.096), 0 6px 20px 0 rgba(0, 0, 0, 0.103);
-}
-
-div.leiras, div.fooldal {
-    background-image: url("../img/seamless-paper-purple.png");
 }
 
 div.leiras:nth-child(even) {
@@ -185,7 +181,7 @@ div.fooldal {
 }
 
 div.fooldal#gombok {
-    height: 10%;
+    height: 80px;
     width: 45%;
     background: inherit;
     box-shadow: none;
@@ -195,7 +191,6 @@ div.fooldal a {
     margin: 5px;
     padding: 5px;
     background-color: rgb(221, 219, 101);
-    /*background-image: url("../img/yellow-triangles.png");*/
     height: 40px;
     width: 100px;
     padding: 10px;

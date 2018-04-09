@@ -57,6 +57,31 @@ div.buttons {
      font-family: 'Exo', sans-serif;
      font-weight: bolder;
  }
+
+ div.buttons a.color1 {
+     color: blue;
+ }
+ div.buttons  a.color2 {
+     color: green;
+ }
+ div.buttons  a.color3 {
+     color: red;
+ }
+ div.buttons  a.color4 {
+     color: darkblue;
+ }
+ div.buttons  a.color5 {
+     color: maroon;
+ }
+ div.buttons  a.color6 {
+     color: turquoise;
+ }
+ div.buttons  a.color7 {
+    color: black;
+ }
+ div.buttons  a.color8 {
+     color: grey;
+ }
  
 
  div.buttons a.activebutton {
