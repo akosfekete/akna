@@ -4,7 +4,7 @@
                         <a href="jatek.php">játék</a>
                         <a href="leiras.php">leírás</a>
                         <a href="toplista.php">toplista</a>
-                        <a href="reg.php">regisztráció</a>
+                        <a href=<?php echo isset($_SESSION["felhasznalonev"]) ? "\"profil.php\">profil" : "\"reg.php\">regisztráció" ?> </a>
                     </div>
 
                     <div class="fooldal">

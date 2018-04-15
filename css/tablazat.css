@@ -2,7 +2,7 @@
     table {
         background-color: rgb(71, 52, 156);
         color: rgb(221, 219, 101);
-        width: 50%;
+        width: 600px;
         margin-left: auto;
         margin-right: auto;
         border-collapse: collapse;
@@ -21,6 +21,13 @@
     td {
         height: 20px;
         font-size: 15px;
+    }
+    td a {
+        text-decoration: none;
+        color: rgb(221, 219, 101);
+    }
+    td a:hover {
+        text-decoration: underline; 
     }
     
     tr:nth-child(even) {

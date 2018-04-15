@@ -1,4 +1,4 @@
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=password] {
     width: 90%;
     height: 35px;
     padding: 6px;
@@ -8,11 +8,27 @@ input[type=text], input[type=email] {
     border: none;
     background-color: rgb(228, 223, 238);
 }
+input[type=file] {
+    margin: 8px;
+}
 .kotelezo {
     color: rgb(228, 79, 79);
     text-shadow: 0 0 5px rgb(39, 28, 85);
 }
-input[type=text]:focus, input[type=email]:focus {
+label.error, label.message {
+    background-color: rgb(228, 223, 238);
+    opacity: 0.9;
+    border-radius: 3px;
+    padding: 10px;
+}
+label.error {
+    color: rgb(228, 79, 79);
+}
+label.message {
+    color: rgb(39, 28, 85);
+    background-color: lightgreen;
+}
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     background-color: white;
     
 }

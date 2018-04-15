@@ -119,6 +119,14 @@ nav ul li a#active {
     animation: none;
 }
 
+h1 {
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 main {
     width: 80%;
     min-height: 60%; /*így kéne, de firefos-ban nem jó*/
@@ -140,7 +148,7 @@ main p {
     margin-top: 70px;
 }
 
-div.leiras, div.fooldal, div.buttons {
+div.leiras, div.fooldal, div.buttons, div.profil {
     background-image: url("../img/seamless-paper-purple.png");
     width: 70%;
     border-radius: 4px;

@@ -1,16 +1,34 @@
 <?php 
     session_start();
 
-    const UNAME = "user";
-    const PASS = "jelszo";
+    $felhasznalo_file = fopen("felhasznalok.csv", "r");
+    $felhasznalok = [];
+    $jelszavak = [];
+    while(!feof($felhasznalo_file)) {
+        $sor = fgets($felhasznalo_file);
+        if(count(explode(',',$sor)) > 1) {
+            try {
+                array_push($felhasznalok, explode(',',$sor)[1]);
+                //echo explode(',',$sor)[1]."<br>";
+            }
+            catch(Exception $e) {}
+        }
+    }
+    rewind($felhasznalo_file);
+    while(!feof($felhasznalo_file)) {
+        $sor = fgets($felhasznalo_file);
+        if(count(explode(',',$sor)) > 1) {
+            array_push($jelszavak, explode(',',$sor)[2]);
+        }
+    }
 
     $error = null;
-    if(isset($_SESSION['uname'])) {
-        $uname = $_SESSION['uname'];
+    if(isset($_SESSION['felhasznalonev'])) {
+        $uname = $_SESSION['felhasznalonev'];
     }
-    elseif((isset($_POST['uname'])) && isset($_POST['pass'])) {
-        $uname = $_POST['uname'];
-        $pass = $_POST['pass'];
+    elseif((isset($_POST['felhasznalonev'])) && isset($_POST['jelszo'])) {
+        $uname = $_POST['felhasznalonev'];
+        $pass = $_POST['jelszo'];
 
         if (strlen($uname) == 0) {
             $error = "Üres felhasználónév";
@@ -18,37 +36,41 @@
         elseif(strlen($pass) == 0) {
             $error = "Üres jelszó";
         }
-        //ide kell a txt-ben tárolt usernevekkel összehasonlítás
-
+        elseif($felhasznalok[array_search($uname, $felhasznalok)] != $uname) {
+            $error = "Nincs ilyen felhasználó";
+        }
         else {
-            $_SESSION['uname'] = $uname;
+            $sorszam = array_search($uname, $felhasznalok);
+            if($pass != $jelszavak[$sorszam]) {
+                $error = "Nem megfelelő jelszó!";
+            }
+            else {
+                $_SESSION["felhasznalonev"] = $uname;
+            }
         }
     }  
 
+if(isset($_SESSION['felhasznalonev'])) {
+    $_SESSION["loggedin"] = true;
+    header("Location: /akna/profil.php");
+    die();
+}
 
 include("header.php");
 
-if(isset($_SESSION['uname'])) {
-    echo "<h5>Bejelentkezés</h5>\n";
+if(isset($_SESSION['felhasznalonev'])) { // ez így nagyon ronda, át kell írni teljesen.
+    echo "<h2>Bejelentkezés</h2>\n";
     echo "<p>Név: $uname</p>\n";
     echo "<p><a href=\"logout.php\">Kijelentkezés</a></p>\n"; // kellene egy session változót módosítani, ami miatt a header-ben lesz logout is.
-}
-elseif(isset($_POST['submit']) && $error == null) {
-    echo "<p>Név: $uname</p>\n";
-    echo "<p>Jelszó: $pass</p>\n";
-}
-else {
-    if($error != null) {
-        echo "<p style=\"color: red;\">$error</p>\n";
-    }
 }
 ?>
 
     <form action="login.php" method="post">
-        <label for="uname">Felhasználónév</label> <br>
-        <input type="text" id="uname" placeholder="Felhasználónév" name="uname"> <br> 
-        <label for="pass">Jelszó</label> <br>
-        <input type="text" id="pass" placeholder="Jelszó" name="pass"> <br>
+        <?php echo is_null($error) ? "" : "<label class=\"error\">Hiba: $error</label><br><br>"; ?>
+        <label for="felhasznalonev">Felhasználónév</label> <br>
+        <input type="text" id="felhasznalonev" placeholder="Felhasználónév" name="felhasznalonev"> <br> 
+        <label for="jelszo">Jelszó</label> <br>
+        <input type="password" id="jelszo" placeholder="Jelszó" name="jelszo"> <br>
         <input type="submit">
     </form>
 

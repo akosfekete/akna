@@ -1,0 +1,55 @@
+div.profil {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 3%;
+    height: 400px;
+    width: 600px;
+    justify-content: center;
+    align-items: center;
+}
+div {
+    margin: auto;
+}
+div#box1 {
+    display: flex;
+    text-align: left; 
+    width: 90%;
+    justify-content: space-around;
+    margin-top: auto;
+}
+div#box2 {
+    margin-top: 35px;
+}
+div#spanbox {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+}
+img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.096), 0 6px 20px 0 rgba(0, 0, 0, 0.103);
+}
+h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+input {
+    padding: 5px;
+}
+input[type=checkbox] {
+    margin-bottom: 10px;
+}
+input[type=submit] {
+    background-color: rgb(228, 223, 238);
+    padding: 6px;
+    border-radius: 4px;
+    border: none;   
+}
+input[type=submit]:hover {
+    background-color: rgb(221, 219, 101);
+}
+span {
+    font-weight: bold;
+}

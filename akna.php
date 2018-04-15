@@ -1,8 +1,12 @@
 <?php
     session_start();
     if($_SESSION['isfirstrun']) {
-        $_SESSION['mineNr'] = getMineNumber();
+
         $_SESSION['mezomeret'] = $_GET['mezomeret'];
+        $_SESSION['nehezseg'] = $_GET['nehezseg'];
+        $_SESSION['cheat'] = $_GET['cheat'];
+
+        $_SESSION['mineNr'] = getMineNumber($_SESSION['nehezseg']);
 
         $buttonArray = [];
         $mineArray = [];
@@ -51,17 +55,50 @@
         }
     }
     
-    function getMineNumber() {
-        $meret = $_SESSION['mezomeret'];
-        $nehezseg = $_GET['nehezseg'];
-
-        switch ($meret) {
-            case 10 : return 10 + $nehezseg * 5;
-            case 15 : return 20 + $nehezseg * 8;
-            case 20 : return 30 + $nehezseg * 15;
+    function getMineNumber($nehezseg) {
+        if(isset($_SESSION['mezomeret'])) {
+            $meret = $_SESSION['mezomeret'];
+            $nehezseg;
+            switch ($meret) {
+                case 10 : return 10 + $nehezseg * 5;
+                case 15 : return 20 + $nehezseg * 8;
+                case 20 : return 30 + $nehezseg * 15;
+            }
         }
     }
-        
+
+    function pontszamKiiras($pontszam) {
+        $pontfile = fopen("pontok.csv", "r+");
+        $pontok = [];
+        $idopont = date("Y.m.d");
+        $hely = -1;
+    
+        if(filesize("pontok.csv") > 0) {
+            while(!feof($pontfile)) {
+                array_push($pontok, fgetcsv($pontfile));
+            }
+            $i=0;
+            foreach($pontok as $p) {
+                if($p[0] == $_SESSION['felhasznalonev']) {
+                    $hely = $i;
+                }
+                $i++;
+            }
+
+            if($hely == -1) {
+                fputcsv($pontfile, [$_SESSION['felhasznalonev'], $pontszam, $idopont]);
+            }
+            elseif($pontok[$hely][1] < $pontszam) {
+                fputcsv($pontfile, [$_SESSION['felhasznalonev'], $pontszam, $idopont]);
+            }
+            
+        }
+        else {
+            $sor = [$_SESSION['felhasznalonev'], $pontszam, $idopont];
+            fputcsv($pontfile, $sor);
+        }
+        fclose($pontfile);
+    }
 ?>
 
 <?php include("header.php"); ?>
@@ -75,6 +112,9 @@
                     $_SESSION['lepesek']++;
                     $_SESSION['buttons'][$buttonPressed] = true;
                 }
+                else {
+                    $buttonPressed = -1;
+                }
 
                 $meret = $_SESSION['mezomeret'] ** 2; //erre már van session változó, azt kéne használni
 
@@ -85,7 +125,7 @@
                     if($_SESSION['isfirstrun']) {
                         break;
                     }
-                    if($_SESSION['mines'][$buttonPressed] == true) {
+                    if($buttonPressed != -1 && $_SESSION['mines'][$buttonPressed] == true) {
                         echo "<video width=\"300\" height=\"300\" autoplay loop> <source src=\"img/allah.webm\"> </video>";
                         break;
                     }
@@ -95,12 +135,14 @@
                             case 15 : echo "<img src=\"./img/winner.png\" alt=\"you're winner\" height=\"450\" width=\"450\">"; break;
                             case 20 : echo "<img src=\"./img/winner.png\" alt=\"you're winner\" height=\"600\" width=\"600\">"; break;
                         }
-                        
+                        $_SESSION['pontszam'] = ($_SESSION['meret'] - $_SESSION['lepesek']) * ($_SESSION['nehezseg']+1);
+                        pontszamKiiras($_SESSION['pontszam']);
                         break;
                         
                     }   
-                                  
-                    checkButtons($buttonPressed);
+                    if($buttonPressed != -1) {
+                        checkButtons($buttonPressed);
+                    }              
 
                     if($i == $buttonPressed) {
                         
@@ -126,7 +168,8 @@
                     }
                     else {
                         if($_SESSION['mines'][$i]) {
-                            echo "<a href=\"akna.php?button=$i\" class=\"minebutton\">$text</a>";
+                            echo $_SESSION['cheat'] == 1 ? "<a href=\"akna.php?button=$i\" class=\"minebutton\">$text</a>" : 
+                                "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>"  ;
                         }
                         else{
                             echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";    
@@ -201,5 +244,6 @@
         </div>
             <h5> Aktív: <?= $_SESSION['meret'] - $_SESSION['megnyomottgombok'] ?><br> </h5>
             <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
+            <h5> <?php echo $_SESSION['pontszam'] == 0 ? "" : "Pontszám: ".$_SESSION['pontszam']; ?></h5>
         <br>
     <?php include("footer.php"); ?>

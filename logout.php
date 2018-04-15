@@ -3,13 +3,10 @@ session_start();
 
 session_unset();
 session_destroy();
-
+header('refresh: 1 ; url = http://localhost/akna/login.php');
 include("header.php");
 
-echo "<a href=\"login.php\">Vissza</a>\n";
+echo "<h1>Sikeres kijelentkezés</h1>";
 
 include("footer.php");
 ?>
-
-<? include("header.php"); ?>
-<? include("footer.php"); ?>
