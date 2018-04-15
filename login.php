@@ -52,7 +52,7 @@
 
 if(isset($_SESSION['felhasznalonev'])) {
     $_SESSION["loggedin"] = true;
-    header("Location: /akna/profil.php");
+    header("Location: profil.php");
     die();
 }
 
