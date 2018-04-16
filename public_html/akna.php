@@ -1,4 +1,5 @@
 <?php
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
     session_start();
     if($_SESSION['isfirstrun']) {
 
@@ -101,7 +102,7 @@
     }
 ?>
 
-<?php include("header.php"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php"); ?>
 
         <div class="buttons" id="mezo<?= $_SESSION['mezomeret'] ?>">
             <?php 
@@ -246,4 +247,4 @@
             <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
             <h5> <?php echo $_SESSION['pontszam'] == 0 ? "" : "Pontszám: ".$_SESSION['pontszam']; ?></h5>
         <br>
-    <?php include("footer.php"); ?>
+    <?php include_once(TEMPLATES_PATH."/footer.php"); ?>

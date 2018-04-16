@@ -1,4 +1,5 @@
 <?php
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -12,37 +13,37 @@
 
     $title = "";
     switch($_SERVER['PHP_SELF']) {
-        case '/index.php' : 
+        case "/public_html/home.php" : 
             $page = 0;
             $title = "| Főoldal";
             break;
-        case '/jatek.php' :
+        case "/public_html/jatek.php"  :
             $page = 1;
             $title = "| Játék";
             break;
-        case '/akna.php' :
+        case "/public_html/akna.php" :
             $page = 1;
             $title = "| Játék";
             break;
-        case '/leiras.php' :
+        case "/public_html/leiras.php"  :
             $page = 2;
             $title = "| Leírás";
             break;
-        case '/toplista.php' :
+        case "/public_html/toplista.php"  :
             $page = 3;
             $title = "| Toplista";
             break;
-        case '/profil.php' :
+        case "/public_html/profil.php"  :
             $page = 4;
             $title = "| Profil";
             break;
-        case '/reg.php' :
+        case "/public_html/reg.php"  :
             $title = "| Regisztráció";
             break;
-        case "/logout.php": 
+        case "/public_html/logout.php" : 
             $title = "| Kijelentkezve";
             break;
-        case '/login.php':
+        case "/public_html/login.php" :
             $title = "| Bejelentkezés";
             break;
     }
@@ -67,7 +68,7 @@
             </header>
             <nav>
                 <ul>
-                    <li><a href="./index.php" <?php echo $page == 0 ? "id=\"active\"" : "" ?>>Főoldal</a></li>
+                    <li><a href="./home.php" <?php echo $page == 0 ? "id=\"active\"" : "" ?>>Főoldal</a></li>
                     <li><a href="./jatek.php" <?php echo $page == 1 ? "id=\"active\"" : "" ?> >Játék</a></li>
                     <li><a href="./leiras.php"<?php echo $page == 2 ? "id=\"active\"" : "" ?> >Leírás</a></li>
                     <li><a href="./toplista.php"<?php echo $page == 3 ? "id=\"active\"" : "" ?> >Toplista</a></li>

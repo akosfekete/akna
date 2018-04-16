@@ -1,10 +1,11 @@
-﻿<?php include("header.php"); ?>
+﻿<?php include_once($_SERVER['DOCUMENT_ROOT']."/constants.php"); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/resources/templates/header.php"); ?>
 
             <div class="fooldal" id="gombok">
                         <a href="jatek.php">játék</a>
                         <a href="leiras.php">leírás</a>
                         <a href="toplista.php">toplista</a>
-                        <a href=<?php echo isset($_SESSION["felhasznalonev"]) ? "\"profil.php\">profil" : "\"reg.php\">regisztráció" ?> </a>
+                        <a href=<?php echo isset($_SESSION['felhasznalonev']) ? "\"profil.php\">profil" : "\"reg.php\">regisztráció" ?> </a>
                     </div>
 
                     <div class="fooldal">
@@ -18,4 +19,4 @@
                         jelenleg nem ismert hatékony algoritmus, amely képes lenne hibátlanul megoldani minden aknakereső-táblát.
                     </div>
                     
-<?php include("footer.php"); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/resources/templates/footer.php"); ?>

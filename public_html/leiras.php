@@ -1,4 +1,5 @@
-﻿<?php include("header.php"); ?>
+﻿<?php include_once($_SERVER['DOCUMENT_ROOT']."/constants.php"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php"); ?>
 
                <div class="leiras">
                     Az aknakereső egy számítógépes játék, melynek célja a mezőn lévő összes akna megtalálása, illetve azok elkerülése. 
@@ -50,4 +51,4 @@
                 </div>
                 
                 
-            <?php include("footer.php"); ?>
+            <?php include_once(TEMPLATES_PATH."/footer.php"); ?>

@@ -1,6 +1,7 @@
-<?php 
-    include("header.php"); 
-    include("beolvaso.php");
+<?php
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once(TEMPLATES_PATH."/header.php");  
+    include_once(RESOURCES_PATH."/beolvaso.php"); 
 ?>
                 <h1 style="margin-top: 10px;">TOP 10</h1>
                 <table>
@@ -30,4 +31,4 @@
                     ?>
                     </tbody>
                 </table>
-<?php include("footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>

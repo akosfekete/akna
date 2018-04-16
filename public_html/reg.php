@@ -4,7 +4,9 @@
         header("Location: profil.php");
         die();
     }
-    include("beolvaso.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once(RESOURCES_PATH."/beolvaso.php"); 
+    include_once(RESOURCES_PATH."/functions.php"); 
     $error = null;
     $message = null;
     if(isset($_POST["felhasznalonev"]) && isset($_POST["jelszo"]) && isset($_POST["email"])) {
@@ -72,7 +74,7 @@
     }
 ?>
 
-<?php include("header.php"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php"); ?>
 
                    <form action="reg.php" method="post" enctype="multipart/form-data">
                    <?php echo is_null($error) ? "" : "<label class=\"error\">Hiba: $error</label><br><br>"; ?>
@@ -94,4 +96,4 @@
                     <p>A <span class="kotelezo">pirossal</span> jelölt mezők kötelezőek.</p>
                    </form>
                    
-<?php include("footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>

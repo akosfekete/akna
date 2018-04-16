@@ -1,13 +1,15 @@
-<?php 
+<?php
     session_start();
-    include("beolvaso.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once(RESOURCES_PATH."/beolvaso.php"); 
+    include_once(RESOURCES_PATH."/functions.php");
     if(isset($_POST["toplista"])) {
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {
             imageUpload($_SESSION['felhasznalonev']);
             header("Location: profil.php");
         }
     }
-    include("header.php"); 
+    include_once(TEMPLATES_PATH."/header.php");  
 ?>
 
     <div class="profil">
@@ -24,9 +26,9 @@
         </div>
     <?php 
         if(isset($_SESSION['felhasznalonev']) && !isset($_GET['felhasznalonev'])) {
-            include("profil_loggedin.php"); 
+            include(RESOURCES_PATH."/profil_loggedin.php"); 
         }
     ?>
     </div>
 
-<?php include("footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>

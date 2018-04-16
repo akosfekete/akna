@@ -1,7 +1,7 @@
 <?php 
     session_start();
-
-    $felhasznalo_file = fopen("felhasznalok.csv", "r");
+    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    $felhasznalo_file = fopen(RESOURCES_PATH."/felhasznalok.csv", "r");
     $felhasznalok = [];
     $jelszavak = [];
     while(!feof($felhasznalo_file)) {
@@ -45,7 +45,7 @@
                 $error = "Nem megfelelő jelszó!";
             }
             else {
-                $_SESSION["felhasznalonev"] = $uname;
+                S_UNAME = $uname;
             }
         }
     }  
@@ -56,7 +56,7 @@ if(isset($_SESSION['felhasznalonev'])) {
     die();
 }
 
-include("header.php");
+include_once(TEMPLATES_PATH."/header.php");
 
 if(isset($_SESSION['felhasznalonev'])) { // ez így nagyon ronda, át kell írni teljesen.
     echo "<h2>Bejelentkezés</h2>\n";
@@ -74,4 +74,4 @@ if(isset($_SESSION['felhasznalonev'])) { // ez így nagyon ronda, át kell írni
         <input type="submit">
     </form>
 
-<?php include("footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>

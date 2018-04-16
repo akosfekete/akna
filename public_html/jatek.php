@@ -1,12 +1,13 @@
-<?php include("header.php"); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT']."/constants.php"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php"); ?>
         
 <?php
     if(isset($_SESSION['loggedin'])) {
-        include("jatekform.php");
+        include(RESOURCES_PATH."/jatekform.php");
     }
     else {
-        include("nemjogosult.php");
+        include(RESOURCES_PATH."/nemjogosult.php");
     }
 ?>
         
-<?php include("footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>
