@@ -12,36 +12,36 @@
 
     $title = "";
     switch($_SERVER['PHP_SELF']) {
-        case '/akna/index.php' : 
+        case 'index.php' : 
             $page = 0;
             $title = "| Főoldal";
             break;
-        case '/akna/jatek.php' :
+        case 'jatek.php' :
             $page = 1;
             $title = "| Játék";
             break;
-        case '/akna/akna.php' :
+        case 'akna.php' :
             $page = 1;
             $title = "| Játék";
             break;
-        case '/akna/leiras.php' :
+        case 'leiras.php' :
             $page = 2;
             $title = "| Leírás";
             break;
-        case '/akna/toplista.php' :
+        case 'toplista.php' :
             $page = 3;
             $title = "| Toplista";
             break;
         case '/akna/profil.php' :
             $page = 4;
             $title = "| Profil";
-        case '/akna/reg.php' :
+        case 'reg.php' :
             $title = "| Regisztráció";
             break;
-        case "/akna/logout.php": 
+        case "logout.php": 
             $title = "| Kijelentkezve";
             break;
-        case '/akna/login.php':
+        case 'login.php':
             $title = "| Bejelentkezés";
             break;
     }

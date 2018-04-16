@@ -4,7 +4,7 @@
     if(isset($_POST["toplista"])) {
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {
             imageUpload($_SESSION['felhasznalonev']);
-            header("Location: /akna/profil.php");
+            header("Location: profil.php");
         }
     }
     include("header.php"); 
