@@ -2,7 +2,7 @@
 <?php include_once(TEMPLATES_PATH."/header.php"); ?>
         
 <?php
-    if(isset($_SESSION['loggedin'])) {
+    if(isset($_SESSION['felhasznalonev'])) {
         include(RESOURCES_PATH."/jatekform.php");
     }
     else {

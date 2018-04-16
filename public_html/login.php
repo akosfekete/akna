@@ -1,57 +1,62 @@
 <?php 
     session_start();
     include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
-    $felhasznalo_file = fopen(RESOURCES_PATH."/felhasznalok.csv", "r");
-    $felhasznalok = [];
-    $jelszavak = [];
-    while(!feof($felhasznalo_file)) {
-        $sor = fgets($felhasznalo_file);
-        if(count(explode(',',$sor)) > 1) {
-            try {
-                array_push($felhasznalok, explode(',',$sor)[1]);
-                //echo explode(',',$sor)[1]."<br>";
-            }
-            catch(Exception $e) {}
-        }
-    }
-    rewind($felhasznalo_file);
-    while(!feof($felhasznalo_file)) {
-        $sor = fgets($felhasznalo_file);
-        if(count(explode(',',$sor)) > 1) {
-            array_push($jelszavak, explode(',',$sor)[2]);
-        }
-    }
-
     $error = null;
-    if(isset($_SESSION['felhasznalonev'])) {
-        $uname = $_SESSION['felhasznalonev'];
+    if(file_exists(FILES_PATH."/felhasznalok.csv")) {
+        $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r");
+        $felhasznalok = [];
+        $jelszavak = [];
+        while(!feof($felhasznalo_file)) {
+            $sor = fgets($felhasznalo_file);
+            if(count(explode(',',$sor)) > 1) {
+                try {
+                    array_push($felhasznalok, explode(',',$sor)[1]);
+                }
+                catch(Exception $e) {}
+            }
+        }
+        rewind($felhasznalo_file);
+        while(!feof($felhasznalo_file)) {
+            $sor = fgets($felhasznalo_file);
+            if(count(explode(',',$sor)) > 1) {
+                array_push($jelszavak, explode(',',$sor)[2]);
+            }
+        }
     }
-    elseif((isset($_POST['felhasznalonev'])) && isset($_POST['jelszo'])) {
-        $uname = $_POST['felhasznalonev'];
-        $pass = $_POST['jelszo'];
-
-        if (strlen($uname) == 0) {
-            $error = "Üres felhasználónév";
+    if(file_exists(FILES_PATH."/felhasznalok.csv")) {
+        if(isset($_SESSION['felhasznalonev'])) {
+            $uname = $_SESSION['felhasznalonev'];
         }
-        elseif(strlen($pass) == 0) {
-            $error = "Üres jelszó";
-        }
-        elseif($felhasznalok[array_search($uname, $felhasznalok)] != $uname) {
-            $error = "Nincs ilyen felhasználó";
-        }
-        else {
-            $sorszam = array_search($uname, $felhasznalok);
-            if($pass != $jelszavak[$sorszam]) {
-                $error = "Nem megfelelő jelszó!";
+        elseif((isset($_POST['felhasznalonev'])) && isset($_POST['jelszo'])) {
+            $uname = $_POST['felhasznalonev'];
+            $pass = $_POST['jelszo'];
+    
+            if (strlen($uname) == 0) {
+                $error = "Üres felhasználónév";
+            }
+            elseif(strlen($pass) == 0) {
+                $error = "Üres jelszó";
+            }
+            elseif($felhasznalok[array_search($uname, $felhasznalok)] != $uname) {
+                $error = "Nincs ilyen felhasználó";
             }
             else {
-                S_UNAME = $uname;
+                $sorszam = array_search($uname, $felhasznalok);
+                if($pass != $jelszavak[$sorszam]) {
+                    $error = "Nem megfelelő jelszó!";
+                }
+                else {
+                    $_SESSION['felhasznalonev'] = $uname;
+                }
             }
         }
-    }  
+    }
+    elseif(isset($_POST['felhasznalonev'])) {
+        $error = "Nincs ilyen felhasználó";
+    }   
+      
 
 if(isset($_SESSION['felhasznalonev'])) {
-    $_SESSION["loggedin"] = true;
     header("Location: profil.php");
     die();
 }

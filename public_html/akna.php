@@ -69,12 +69,17 @@
     }
 
     function pontszamKiiras($pontszam) {
-        $pontfile = fopen("pontok.csv", "r+");
+        if(!file_exists(FILES_PATH."/pontok.csv")) {
+            $pontfile = fopen(FILES_PATH."/pontok.csv", "a+");    
+        }
+        else {
+            $pontfile = fopen(FILES_PATH."/pontok.csv", "r+");
+        }
         $pontok = [];
         $idopont = date("Y.m.d");
         $hely = -1;
     
-        if(filesize("pontok.csv") > 0) {
+        if(filesize(FILES_PATH."/pontok.csv") > 0) {
             while(!feof($pontfile)) {
                 array_push($pontok, fgetcsv($pontfile));
             }

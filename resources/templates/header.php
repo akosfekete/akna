@@ -6,7 +6,7 @@
     $page=-1;
     $login = "<a href=\"login.php\">Belépés</a>";
     $reg = "<a href=\"./reg.php\">Regisztráció</a>";
-    if(isset($_SESSION["loggedin"])) {
+    if(isset($_SESSION["felhasznalonev"])) {
         $login = "<a href=\"profil.php\">Profil</a>";
         $reg = "<a href=\"./logout.php\">Kilépés</a>";
     }
@@ -48,7 +48,7 @@
             break;
     }
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>Aknakereső <?= $title ?></title>

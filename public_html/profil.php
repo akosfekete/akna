@@ -1,17 +1,16 @@
 <?php
     session_start();
     include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
-    include_once(RESOURCES_PATH."/beolvaso.php"); 
     include_once(RESOURCES_PATH."/functions.php");
-    if(isset($_POST["toplista"])) {
+    if(isset($_POST["foo"])) {
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {
             imageUpload($_SESSION['felhasznalonev']);
             header("Location: profil.php");
         }
     }
     include_once(TEMPLATES_PATH."/header.php");  
+    include_once(RESOURCES_PATH."/beolvaso.php"); 
 ?>
-
     <div class="profil">
         <h1><?= $felhasznalo[1] ?> profilja</h1>
         <div class="box" id="box1">

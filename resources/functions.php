@@ -24,7 +24,7 @@
                 $target_file = $target_dir . $_POST["felhasznalonev"];
             }
             else {
-                $target_file = $target_dir . S_UNAME;
+                $target_file = $target_dir . $_SESSION['felhasznalonev'];
             }
             
             if (move_uploaded_file($_FILES["profilkep"]["tmp_name"], $target_file . '.' . $imageFileType)) {

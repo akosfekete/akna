@@ -10,8 +10,13 @@
     $error = null;
     $message = null;
     if(isset($_POST["felhasznalonev"]) && isset($_POST["jelszo"]) && isset($_POST["email"])) {
-        $felhasznalo_file = fopen("felhasznalok.csv", "r+");
-        $felhasznalok = [];
+        if(!file_exists(FILES_PATH."/felhasznalok.csv")) {
+            $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "a+");    
+        }
+        else {
+            $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r+");
+        }
+        $felhasznalok = ["placeholder"];
         $emailek = [];
         //$i=0;
         $asor = fgets($felhasznalo_file);
@@ -43,7 +48,7 @@
             if(array_search($email, $emailek) != FALSE) {
                 $error = "Már van ilyen e-mail cím.";
             }
-            elseif($felhasznalok[array_search($uname, $felhasznalok)] == $uname) { // nem tudom ez mi a kurva anyjáért kell, de csak így működik.
+            elseif(array_search($uname, $felhasznalok)) { // nem tudom ez mi a kurva anyjáért kell, de csak így működik.
                 $error = "Már van ilyen nevű felhasználó."; // azért szar, mert 0 == FALSE. Az első elemnek placeholdernek kell lennie.
             }
             elseif($_POST["jelszoism"] != $pass) {

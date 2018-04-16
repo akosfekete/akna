@@ -1,15 +1,19 @@
 <?php 
 include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
-    $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r");
-    $pontfile = fopen(FILES_PATH."/pontok.csv", "r");
+    $felhasznalo_file = null;
+    $pontfile = null;
+    if(file_exists(FILES_PATH."/felhasznalok.csv")) {
+        $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r"); 
+    }
+    if(file_exists(FILES_PATH."/pontok.csv")) {
+        $pontfile = fopen(FILES_PATH."/pontok.csv", "r"); 
+    }
     $adatok = [];
     $felhasznalo = [];
     $pontok = [];
     $toplista = [];
     $usernevek = ["placeholder"];
     $pontszam = 0; //"Még nem játszott";
-
-   
 
     function topSort($toplista) {
         for($i = 0; $i<count($toplista); $i++) {
@@ -49,10 +53,10 @@ include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
         return $pontszam;
     }
 
-    while(!feof($felhasznalo_file)) {
+    while(!is_null($felhasznalo_file) and !feof($felhasznalo_file)) {
         array_push($adatok, fgetcsv($felhasznalo_file));
     }
-    while(!feof($pontfile)) {
+    while(!is_null($pontfile) and !feof($pontfile)) {
         array_push($pontok, fgetcsv($pontfile));
     }
     $rpontok = array_reverse($pontok);
@@ -66,7 +70,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
         else {
             $felhasznalo = findUser($_SESSION['felhasznalonev'], $adatok);
             $pontszam = getPontszam($_SESSION['felhasznalonev'], $pontok);
-            $uname = 'S_UNAME';
+            $uname = $_SESSION['felhasznalonev'];
         }
         
         $profilkep = "img/default_user.png";
@@ -93,6 +97,6 @@ include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
     
     
 
-    fclose($felhasznalo_file);
-    fclose($pontfile);
+    !is_null($felhasznalo_file) ? fclose($felhasznalo_file) : 1;
+    !is_null($pontfile) ? fclose($pontfile) : 1;
 ?>
