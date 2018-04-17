@@ -48,7 +48,7 @@
             if(array_search($email, $emailek) != FALSE) {
                 $error = "Már van ilyen e-mail cím.";
             }
-            elseif(array_search($uname, $felhasznalok)) { // nem tudom ez mi a kurva anyjáért kell, de csak így működik.
+            elseif(array_search($uname, $felhasznalok)) {
                 $error = "Már van ilyen nevű felhasználó."; // azért szar, mert 0 == FALSE. Az első elemnek placeholdernek kell lennie.
             }
             elseif($_POST["jelszoism"] != $pass) {

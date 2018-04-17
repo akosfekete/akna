@@ -1,6 +1,8 @@
 <?php
-    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    require_once(RESOURCES_PATH."/functions.php");
     session_start();
+
     if($_SESSION['isfirstrun']) {
 
         $_SESSION['mezomeret'] = $_GET['mezomeret'];
@@ -55,56 +57,6 @@
             //echo "$place\n";
         }
     }
-    
-    function getMineNumber($nehezseg) {
-        if(isset($_SESSION['mezomeret'])) {
-            $meret = $_SESSION['mezomeret'];
-            $nehezseg;
-            switch ($meret) {
-                case 10 : return 10 + $nehezseg * 5;
-                case 15 : return 20 + $nehezseg * 8;
-                case 20 : return 30 + $nehezseg * 15;
-            }
-        }
-    }
-
-    function pontszamKiiras($pontszam) {
-        if(!file_exists(FILES_PATH."/pontok.csv")) {
-            $pontfile = fopen(FILES_PATH."/pontok.csv", "a+");    
-        }
-        else {
-            $pontfile = fopen(FILES_PATH."/pontok.csv", "r+");
-        }
-        $pontok = [];
-        $idopont = date("Y.m.d");
-        $hely = -1;
-    
-        if(filesize(FILES_PATH."/pontok.csv") > 0) {
-            while(!feof($pontfile)) {
-                array_push($pontok, fgetcsv($pontfile));
-            }
-            $i=0;
-            foreach($pontok as $p) {
-                if($p[0] == $_SESSION['felhasznalonev']) {
-                    $hely = $i;
-                }
-                $i++;
-            }
-
-            if($hely == -1) {
-                fputcsv($pontfile, [$_SESSION['felhasznalonev'], $pontszam, $idopont]);
-            }
-            elseif($pontok[$hely][1] < $pontszam) {
-                fputcsv($pontfile, [$_SESSION['felhasznalonev'], $pontszam, $idopont]);
-            }
-            
-        }
-        else {
-            $sor = [$_SESSION['felhasznalonev'], $pontszam, $idopont];
-            fputcsv($pontfile, $sor);
-        }
-        fclose($pontfile);
-    }
 ?>
 
 <?php include_once(TEMPLATES_PATH."/header.php"); ?>
@@ -122,7 +74,7 @@
                     $buttonPressed = -1;
                 }
 
-                $meret = $_SESSION['mezomeret'] ** 2; //erre már van session változó, azt kéne használni
+                $meret = $_SESSION['meret'];
 
                 for($i=0; $i<$meret; $i++) {
                     $text = $_SESSION['buttontext'][$i];
@@ -132,7 +84,10 @@
                         break;
                     }
                     if($buttonPressed != -1 && $_SESSION['mines'][$buttonPressed] == true) {
-                        echo "<video width=\"300\" height=\"300\" autoplay loop> <source src=\"img/allah.webm\"> </video>";
+                        //echo "<video width=\"300\" height=\"300\" autoplay loop> <source src=\"img/allah.webm\"> </video>";
+                        echo "<h1>Játék vége</h1>";
+                        echo "<div class=\"fooldal\" id=\"gombok\"><a href=\"jatek.php\"
+                            style=\"width: 100px; font-size: 15px;\">Új játék</a></div>";
                         break;
                     }
                     if($_SESSION['megnyomottgombok'] == $meret-$_SESSION['mineNr']) { 
@@ -151,7 +106,6 @@
                     }              
 
                     if($i == $buttonPressed) {
-                        
                         $text = $_SESSION['buttontext'][$buttonPressed];
                         if($text == '.') {
                             echo "<a  class=\"pressedemptybutton\">$text</a>";
@@ -159,11 +113,9 @@
                         else {
                             echo "<a  class=\"pressedbutton color$text\">$text</a>";
                         }
-                        
-
                         $_SESSION['buttons'][$i] = true;
-
                     }
+
                     elseif($_SESSION['buttons'][$i]) {
                         if($text == '.') {
                             echo "<a  class=\"pressedemptybutton\" >$text</a>";    
@@ -172,15 +124,17 @@
                             echo "<a  class=\"pressedbutton color$text\" >$text</a>";
                         }
                     }
+
                     else {
                         if($_SESSION['mines'][$i]) {
                             echo $_SESSION['cheat'] == 1 ? "<a href=\"akna.php?button=$i\" class=\"minebutton\">$text</a>" : 
-                                "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>"  ;
+                                "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";
                         }
-                        else{
+                        else {
                             echo "<a href=\"akna.php?button=$i\" class=\"activebutton\">$text</a>";    
                         }
                     }
+
                     if(($i+1) % $_SESSION['mezomeret'] == 0) {
                         echo "\n\n";
                     }
@@ -195,61 +149,12 @@
                     $_SESSION['isfirstrun'] = false;
                     $_SESSION['lepesek']++;
                 }
-                //fclose($myFile);
-                function checkButtons($buttonToCheck) { //ezt ki lehetne szedni a div-ből, így nincs értelme.
-                    $m = 0;
-                    $oldal = $_SESSION['mezomeret'];
-                    for($i=-1; $i<2; $i++) {
-                        for($j=-1; $j<2; $j++) {
-                            $n = $buttonToCheck + $i*$oldal+$j;
-                            if(($n>=0) ) {
-                                if($n >= $oldal ** 2) {
-                                    continue;
-                                }
-                                if(($buttonToCheck % $oldal == 0) and ($n % $oldal == ($oldal -1) )) {
-                                    continue;
-                                }
-                                if(($buttonToCheck % $oldal == ($oldal -1) ) and ($n % $oldal == 0 )) {
-                                    continue;
-                                }
-                                if($_SESSION['mines'][$n] == true) {
-                                    $m++;
-                                }
-                            }
-                        }
-                    }
-                    
-                    if($m==0) {
-                        for($i=-1; $i<2; $i++) {
-                            for($j=-1; $j<2; $j++) {
-                                $n = $buttonToCheck + $i*$oldal+$j;
-                                if(($n>=0) ) {
-                                    if($n >= $oldal ** 2) 
-                                        continue;
-                                    if(($buttonToCheck % $oldal == 0) and ($n % $oldal == ($oldal -1))) {
-                                        continue;
-                                    }
-                                    if(($buttonToCheck % $oldal == ($oldal - 1) ) and ($n % $oldal == 0 )) {
-                                        continue;
-                                    }
-                                    if($_SESSION['buttons'][$n] == false and ($n != $buttonToCheck)) {
-                                        $_SESSION['buttons'][$n] = true;
-                                        $_SESSION['megnyomottgombok']++;
-                                        checkButtons($n);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if($m > 0) {
-                        $_SESSION['buttontext'][$buttonToCheck] = $m;            
-                    }
-                }
+                
             ?>
            
         </div>
             <h5> Aktív: <?= $_SESSION['meret'] - $_SESSION['megnyomottgombok'] ?><br> </h5>
             <h5> Lépések: <?= $_SESSION['lepesek'] ?><br> </h5>
-            <h5> <?php echo $_SESSION['pontszam'] == 0 ? "" : "Pontszám: ".$_SESSION['pontszam']; ?></h5>
+            <h1> <?php echo $_SESSION['pontszam'] == 0 ? "" : "Pontszám: ".$_SESSION['pontszam']; ?></h1>
         <br>
-    <?php include_once(TEMPLATES_PATH."/footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>

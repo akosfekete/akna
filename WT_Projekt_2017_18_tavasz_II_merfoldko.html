@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Webtervezés 2018 - II. mérföldkő</title>
+    <style type="text/css">
+      body {
+        font-family: "Segoe UI",Arial,sans-serif;
+        background-color: #fcfcfc;
+        font-size:16px;
+        padding-bottom:50px;
+      }
+      table,td,th {
+        border-collapse: collapse;
+      }
+      th,td {
+        border: 1px solid #000000;
+        padding:5px;
+      }
+      table {
+        margin:10px;
+      }
+      td:first-child {
+        /*font-weight:bold;*/
+        vertical-align: top;
+      }
+      .stfill {
+        font-weight:bold;
+        color:#DD4132;
+      }
+      .sum {
+        border-top:2px solid #000000;
+      }
+      .sum td {
+        font-weight:bold;
+      }
+      .task {
+        /*font-weight:bold;*/
+      }
+      .subtask {
+        padding-left:25px;
+      }
+      .note {
+        font-size:12px;
+        display:block;
+      }
+      tr.sum>td:nth-child(2),
+      td:nth-child(3),
+      td:nth-child(4) {
+        text-align: center;
+      }
+      tr.header {
+        border-bottom: 2px solid #000000;
+      }
+      .example {
+        font-style: italic;
+        color:grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web tervezés - II. mérföldkő követelmények</h1>
+    <div>
+      <h2>Általános elvárások</h2>
+      <ul>
+        <li>Az elfogadáshoz egy XAMPP környezetben futó webalkalmazást (PHP) kell elkészíteni, melynek tükröznie kell az I. mérföldkőben megadott témát.</li>
+        <li>PHP keretrendszerek használatára nincs lehetőség.</li>
+        <li>A projekt megvalósítása során adatbázist nem lehet használni.</li>
+        <li>Az elkészített feladatot egy zip fájlban kell feltölteni CooSpace-re a követelményekben megfogalmazott határidőig.</li>
+        <li>A zip fájlnak tartalmaznia kell egy mappát, melynek neve a hallgató Neptun-kódja (kis betűvel). A projekt fájljait ebben kell elhelyezni.</li>
+        <li>Kicsomagolás után a projekt mappáját (Neptun-kóddal megegyező mappa név) a XAMPP htdocs mappájába másolva, mindenféle konfiguráció nélkül a weboldalnak működnie kell a <em>localhost/[neptun]</em> url-t megnyitva böngészőben, ahol az [neptun] a hallgató Neptun-kódját jelenti (szintén kis betűvel). (A portszámtól eltekintve.)</li>
+        <li>A fenti elvárások a pontozásban "Formai követelmények" néven szerepelnek.</li>
+        <li>A táblázatban dőlt betűkkel vannak jelölve azok a követelmények (7), amelyek javítására lehetőség van az értékelést követően.</li>
+        <li>Ezen dokumentumot kitöltve mellékelni kell a beadott zip fájlban.</li>
+        <li>Amennyiben az I. mérföldkő nem került beadásra, az I. mérföldő követelményeit tartalmazó HTML fájlt kitöltve is mellékelni kell.</li>
+        <li class="stfill">Beadás előtt ajánlott ellenőrizni a kabinetben, hogy működik-e, mert a nem működő megoldások nem kerülnek pontozásra!</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Hallgató adatai</h2>
+      <ul>
+        <li>Név: <span class="stfill">Fekete Ákos</span></li>
+        <li>Neptun-kód: <span class="stfill">QCW090</span></li>
+        <li>Szak, évfolyam: <span class="stfill">Programtervező informatikus, I. évfolyam</span></li>
+        <li>E-mail cím: <span class="stfill">h758404@stud.u-szeged.hu</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Választott téma</h2>
+      <p>A választott téma rövid (5-10 mondat) összefoglalása:</p>
+      <p>
+        <span class="stfill">
+            A projekt ötletek keretében is javasolt aknakereső játék megvalósítása HTML, CSS és PHP használatával. A PHP részben <br>
+            elkészítettem a paraméterezhető aknakeresőt, ahol a mező mérete, illetve a nehézség is 3 lépésben állítható, a 'Játék' <br>
+            részben megjelenő űrlap segítségével. Maga a játék csak bejelentkezett felhasználók számára érhető el. Az összes, nem aknát <br>
+            tartalmazó mező feltárása esetén a játékos kap egy pontszámot, ami megjelenik a 'Toplista' menüpontban található top 10-es listán. <br>
+            Ezek mellett a felhasználóknak lehetőségük van regisztrációkor, vagy utólagosan profilképet feltölteni, amire bejelentkezés <br>
+            után a 'Profil' oldalon van lehetőség. A toplistán szereplő felhasználók profiljai kijelentkezett állapotban is megtekinthetőek, <br>
+            a felhasználónévre való kattintással. Ilyen esetben a profilkép megváltoztatására nincs lehetőség.
+
+        </span>
+      </p>
+      <p>
+        A projektnek kötelező jelleggel tartalmaznia kell fehasználókezelést. <br>
+        Kiemelt funkciók (legalább 3 darab a kötelezőkön kívül):
+      </p>
+      <ul>
+        <li><b>Felhasználó kezelés: regisztráció, belépés</b></li>
+        <li><span class="stfill">Aknakereső megvalósítása</span></li>
+        <li><span class="stfill">Paraméterezhető pályagenerálás</span></li>
+        <li><span class="stfill">Toplista vezetése</span></li>
+        <li><span class="stfill">Profilkép feltöltés</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Pontozás</h2>
+      <p>
+        Ezt a részt az oktató tölti ki.
+      </p>
+      <table>
+        <tr class="header">
+          <th>
+
+          </th>
+          <th>
+            Részfeladat
+          </th>
+          <th>
+            Szerezhető pontszám
+          </th>
+          <th>
+            Szerzett pontszám
+          </th>
+          <th>
+            Megjegyzés
+          </th>
+        </tr>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            Formai követelmények
+          </td>
+          <td>3</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            2
+          </td>
+          <td class="task">
+            Szabványos dinamikusan generált HTML
+            <div class="note">Hibás oldalanként 1 pont levonás. Minimum 0 pont.</div>
+          </td>
+          <td>5</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            3
+          </td>
+          <td class="task" colspan="99">
+            Menü
+          </td>
+        </tr>
+        <tr>
+          <td>
+            3.1
+          </td>
+          <td class="subtask">
+            Az éppen megnyitott menüpont ki van emelve
+          </td>
+          <td>1</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            3.2
+          </td>
+          <td class="subtask">
+            Hiba nélkül működő navigáció
+          </td>
+          <td>2</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            4
+          </td>
+          <td class="task" colspan="99">
+            Felhasználó kezelés
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4.1
+          </td>
+          <td class="subtask">
+            Menetkövetés
+            <div class="note">Szabályos session használat.</div>
+          </td>
+          <td>1</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            4.2
+          </td>
+          <td class="subtask">
+            Bejelentkezés
+            <div class="note">- hibás adatok esetén hibaüzenet</div>
+            <div class="note">- helyes adatok esetén működő bejelentkezés</div>
+          </td>
+          <td>2</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            4.3
+          </td>
+          <td class="subtask">
+            Belépett felhasználó ellenőrzése
+            <div class="note">Amennyiben egy nem belépett felhasználó olyan oldalt <br> nyit meg, amit csak belépett felhasználó tud elérni, <br> irányítson át a bejelentkezéshez.</div>
+          </td>
+          <td>2</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            4.4
+          </td>
+          <td class="subtask">
+            Kijelentkezés
+          </td>
+          <td>1</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            5
+          </td>
+          <td class="task" colspan="99">
+            Regisztráció
+          </td>
+        </tr>
+        <tr>
+          <td>
+            5.1
+          </td>
+          <td class="subtask">
+            Működő regisztráció
+          </td>
+          <td>1</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            5.2
+          </td>
+          <td class="subtask">
+            Űrlap ellenőrzés PHP oldalon
+            <div class="note">- nem kitöltött űrlap ellenőrzés</div>
+            <div class="note">- foglalt-e a felhasználónév</div>
+            <div class="note">- jelszó ismétlő mező ellenőrzés</div>
+          </td>
+          <td>3</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            6
+          </td>
+          <td class="task" colspan="99">
+            PHP
+          </td>
+        </tr>
+        <tr>
+          <td>
+            6.1
+          </td>
+          <td class="subtask">
+            A szabad témaválasztás miatt a pontozás <br> a megvalósítás összetettsége alapján történik.
+            <div class="note">Pontot ér:</div>
+            <div class="note">- ciklus használat (max 2x): 1-3p</div>
+            <div class="note">- GET paraméter alapján adat megjelenítés: 1-3p</div>
+            <div class="note">- űrlapos adatkezelés megvalósítás (max 2x): 1-4p</div>
+            <div class="note">- kép feltöltés: 2-5p</div>
+            <div class="note">- összetett számítás: 1-2p</div>
+            <div class="note">- fájlkezelés: 2-5p</div>
+            <div class="note">- összetett adatok tárolása session-ben: 2-5p</div>
+            <div class="note">- dátum kezelés: 1-2p</div>
+            <div class="note">- string műveletek: 1-2p</div>
+            <div class="note">- belépéshez kötött funkció: 1-2p</div>
+            <div class="note">- kivételkezelés: 1-2p</div>
+            <div class="note">- menetkövetés letiltott sütikkel is: 5p</div>
+          </td>
+          <td>24</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>
+            7
+          </td>
+          <td class="task">
+            <i>Megvalósítás minősége és átláthatósága</i>
+            <div class="note">Az alábbiakból lehet összeszedni:</div>
+            <div class="note">- objektum orientáltság használata: 1-4p</div>
+            <div class="note">- függvények használata: 1-2p</div>
+            <div class="note">- kód ismétlések elkerülése: 1-2p</div>
+            <div class="note">- logikusan, fájlokba szervezett kód: 1p</div>
+            <div class="note">- CSS betöltése külön fájlból: 1p</div>
+          </td>
+          <td>5</td><td></td><td></td>
+        </tr>
+        <tr class="sum">
+          <td colspan="2">Összpontszám:</td>
+          <td>50</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h2>Megjegyzés</h2>
+      <p>A hallgató opcionális megjegyzése a beadott feladathoz.</p>
+      <p>
+         <span class="stfill">[Hallgató tölti ki...]</span>
+      </p>
+    </div>
+    <p> Közzétéve: 2018. 03. 12. </p>
+  </body>
+</html>
