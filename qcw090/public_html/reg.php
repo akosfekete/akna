@@ -4,7 +4,7 @@
         header("Location: profil.php");
         die();
     }
-    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     include_once(RESOURCES_PATH."/beolvaso.php"); 
     include_once(RESOURCES_PATH."/functions.php"); 
     $error = null;
@@ -38,7 +38,6 @@
         }
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {
             imageUpload($_POST['felhasznalonev']);
-            echo "asdélksfdajélk <br>";
         }
      
         $uname = $_POST["felhasznalonev"];

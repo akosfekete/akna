@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     require_once(RESOURCES_PATH."/functions.php");
     session_start();
 

@@ -1,5 +1,5 @@
 <?php 
-include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     $felhasznalo_file = null;
     $pontfile = null;
     if(file_exists(FILES_PATH."/felhasznalok.csv")) {

@@ -1,5 +1,5 @@
 <?php
-    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -13,37 +13,37 @@
 
     $title = "";
     switch($_SERVER['PHP_SELF']) {
-        case "/public_html/home.php" : 
+        case HTML_PATH."home.php" : 
             $page = 0;
             $title = "| Főoldal";
             break;
-        case "/public_html/jatek.php"  :
+        case HTML_PATH."jatek.php"  :
             $page = 1;
             $title = "| Játék";
             break;
-        case "/public_html/akna.php" :
+        case HTML_PATH."akna.php" :
             $page = 1;
             $title = "| Játék";
             break;
-        case "/public_html/leiras.php"  :
+        case HTML_PATH."leiras.php"  :
             $page = 2;
             $title = "| Leírás";
             break;
-        case "/public_html/toplista.php"  :
+        case HTML_PATH."toplista.php"  :
             $page = 3;
             $title = "| Toplista";
             break;
-        case "/public_html/profil.php"  :
+        case HTML_PATH."profil.php"  :
             $page = 4;
             $title = "| Profil";
             break;
-        case "/public_html/reg.php"  :
+        case HTML_PATH."reg.php"  :
             $title = "| Regisztráció";
             break;
-        case "/public_html/logout.php" : 
+        case HTML_PATH."logout.php" : 
             $title = "| Kijelentkezve";
             break;
-        case "/public_html/login.php" :
+        case HTML_PATH."login.php" :
             $title = "| Bejelentkezés";
             break;
     }

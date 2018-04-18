@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     include_once(RESOURCES_PATH."/functions.php");
     if(isset($_POST["foo"])) {
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {

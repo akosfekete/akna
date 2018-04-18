@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once($_SERVER['DOCUMENT_ROOT']."/constants.php");
+    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     $error = null;
     if(file_exists(FILES_PATH."/felhasznalok.csv")) {
         $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r");

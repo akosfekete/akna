@@ -1,5 +1,5 @@
-﻿<?php include_once($_SERVER['DOCUMENT_ROOT']."/constants.php"); ?>
-<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/resources/templates/header.php"); ?>
+﻿<?php include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php"); ?>
 
             <div class="fooldal" id="gombok">
                         <a href="jatek.php">játék</a>
@@ -16,7 +16,7 @@
                         ellentétben az aknakereső során a játékosnak sokkal inkább az eszére, semmint ügyességére kell hagyatkoznia. 
                         A játék elé egyszerű ahhoz, hogy könnyedén meg lehessen érteni a szabályokat, ugyanakkor elég komplex ahhoz, hogy
                         ne váljon gyorsan unalmassá. A későbbiekben látni fogjuk, hogy a játék még egy számítógép számára is kellően bonyolult, 
-                        jelenleg nem ismert hatékony algoritmus, amely képes lenne hibátlanul megoldani minden aknakereső-táblát.
+                        jelenleg nem ismert hatékony algoritmus, amely képes lenne hibátlanul megoldani minden aknakereső-táblát. <br>
                     </div>
                     
-<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/resources/templates/footer.php"); ?>
+<?php include_once(TEMPLATES_PATH."/footer.php"); ?>
