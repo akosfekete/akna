@@ -2,24 +2,22 @@
      function imageUpload($uname) {
         $target_dir = "profilkepek/";
         $target_file = $target_dir . basename($_FILES["profilkep"]["name"]);
-        $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $existing_file = glob("profilkepek/$uname.*");
-        if($existing_file) {
-            unlink(realpath($existing_file[0]));
-        }
+        $error = "nincs error";
 
         if (file_exists($target_file)) {
             $error = "Már van ilyen fájl.";
-            $uploadOk = 0;
         }
 
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
             $error = "Csak JPG, JPEG, PNG és GIF kiterjesztésű fájlok megengedettek.";
-            $uploadOk = 0;
         }
         else {
+            if($existing_file) {
+                unlink(realpath($existing_file[0]));
+            }
             if(isset($_POST["felhasznalonev"])) {
                 $target_file = $target_dir . $_POST["felhasznalonev"];
             }
@@ -34,6 +32,7 @@
                 $error = "hiba a képfeltöltésnél";
             }
         }
+        return $error;
     }
 
     function getMineNumber($nehezseg) {
@@ -102,7 +101,7 @@
                     if(($buttonToCheck % $oldal == ($oldal -1) ) and ($n % $oldal == 0 )) {
                         continue;
                     }
-                    if($_SESSION['mines'][$n] == true) {
+                    if($_SESSION['aknak'][$n] == true) {
                         $m++;
                     }
                 }
@@ -122,8 +121,8 @@
                         if(($buttonToCheck % $oldal == ($oldal - 1) ) and ($n % $oldal == 0 )) {
                             continue;
                         }
-                        if($_SESSION['buttons'][$n] == false and ($n != $buttonToCheck)) {
-                            $_SESSION['buttons'][$n] = true;
+                        if($_SESSION['gombok'][$n] == false and ($n != $buttonToCheck)) {
+                            $_SESSION['gombok'][$n] = true;
                             $_SESSION['megnyomottgombok']++;
                             checkButtons($n);
                         }
@@ -132,7 +131,7 @@
             }
         }
         if($m > 0) {
-            $_SESSION['buttontext'][$buttonToCheck] = $m;            
+            $_SESSION['gombszoveg'][$buttonToCheck] = $m;            
         }
     }
 ?>

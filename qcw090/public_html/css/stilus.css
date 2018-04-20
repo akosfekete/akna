@@ -129,9 +129,7 @@ h1 {
 
 main {
     width: 80%;
-    min-height: 60%; /*így kéne, de firefos-ban nem jó*/
     min-height: 600px;
-    /*padding: 10px;*/
     padding: 1%;
     margin-left: auto;
     margin-right: auto;

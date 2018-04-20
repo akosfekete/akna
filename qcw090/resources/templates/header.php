@@ -1,5 +1,5 @@
 <?php
-    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -52,6 +52,7 @@
 <html>
     <head>
         <title>Aknakereső <?= $title ?></title>
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="css/stilus.css">
         <link rel="stylesheet" href="css/akna.css">
         <?php echo $page == 4 ? "" : "<link rel=\"stylesheet\" href=\"css/urlap.css\">"; ?>

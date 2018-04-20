@@ -53,3 +53,6 @@ input[type=submit]:hover {
 span {
     font-weight: bold;
 }
+label#error {
+    color: crimson;
+}

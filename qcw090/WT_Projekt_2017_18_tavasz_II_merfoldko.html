@@ -95,8 +95,9 @@
             részben megjelenő űrlap segítségével. Maga a játék csak bejelentkezett felhasználók számára érhető el. Az összes, nem aknát <br>
             tartalmazó mező feltárása esetén a játékos kap egy pontszámot, ami megjelenik a 'Toplista' menüpontban található top 10-es listán. <br>
             Ezek mellett a felhasználóknak lehetőségük van regisztrációkor, vagy utólagosan profilképet feltölteni, amire bejelentkezés <br>
-            után a 'Profil' oldalon van lehetőség. A toplistán szereplő felhasználók profiljai kijelentkezett állapotban is megtekinthetőek, <br>
-            a felhasználónévre való kattintással. Ilyen esetben a profilkép megváltoztatására nincs lehetőség.
+            után a 'Profil' oldalon van lehetőség. A már feltöltött profilkép cseréjére is van lehetőség, ilyenkor az eredeti profilkép formátumtól <br>
+            függetlenül felülíródik. A toplistán szereplő felhasználók profiljai kijelentkezett állapotban is megtekinthetőek, <br>
+            a felhasználónévre való kattintással. Ilyen esetben a profilkép megváltoztatására nincs lehetőség. <br>
 
         </span>
       </p>
@@ -167,7 +168,7 @@
             3.1
           </td>
           <td class="subtask">
-            Az éppen megnyitott menüpont ki van emelve
+            <a href="public_html/home.php">Az éppen megnyitott menüpont ki van emelve</a> 
           </td>
           <td>1</td><td></td><td></td>
         </tr>
@@ -176,7 +177,7 @@
             3.2
           </td>
           <td class="subtask">
-            Hiba nélkül működő navigáció
+            <a href="public_html/home.php">Hiba nélkül működő navigáció</a> 
           </td>
           <td>2</td><td></td><td></td>
         </tr>
@@ -193,7 +194,7 @@
             4.1
           </td>
           <td class="subtask">
-            Menetkövetés
+            <a href="public_html/login.php">Menetkövetés</a> 
             <div class="note">Szabályos session használat.</div>
           </td>
           <td>1</td><td></td><td></td>
@@ -203,7 +204,7 @@
             4.2
           </td>
           <td class="subtask">
-            Bejelentkezés
+            <a href="public_html/login.php">Bejelentkezés</a> 
             <div class="note">- hibás adatok esetén hibaüzenet</div>
             <div class="note">- helyes adatok esetén működő bejelentkezés</div>
           </td>
@@ -214,7 +215,7 @@
             4.3
           </td>
           <td class="subtask">
-            Belépett felhasználó ellenőrzése
+            <a href="public_html/login.php">Belépett felhasználó ellenőrzése</a> 
             <div class="note">Amennyiben egy nem belépett felhasználó olyan oldalt <br> nyit meg, amit csak belépett felhasználó tud elérni, <br> irányítson át a bejelentkezéshez.</div>
           </td>
           <td>2</td><td></td><td></td>
@@ -224,7 +225,7 @@
             4.4
           </td>
           <td class="subtask">
-            Kijelentkezés
+            <a href="public_html/logout.php">Kijelentkezés</a> 
           </td>
           <td>1</td><td></td><td></td>
         </tr>
@@ -233,7 +234,7 @@
             5
           </td>
           <td class="task" colspan="99">
-            Regisztráció
+            <a href="public_html/reg.php">Regisztráció</a> 
           </td>
         </tr>
         <tr>
@@ -241,7 +242,7 @@
             5.1
           </td>
           <td class="subtask">
-            Működő regisztráció
+            <a href="public_html/reg.php">Működő regisztráció</a> 
           </td>
           <td>1</td><td></td><td></td>
         </tr>
@@ -250,7 +251,7 @@
             5.2
           </td>
           <td class="subtask">
-            Űrlap ellenőrzés PHP oldalon
+            <a href="public_html/reg.php"></a> Űrlap ellenőrzés PHP oldalon
             <div class="note">- nem kitöltött űrlap ellenőrzés</div>
             <div class="note">- foglalt-e a felhasználónév</div>
             <div class="note">- jelszó ismétlő mező ellenőrzés</div>
@@ -272,17 +273,18 @@
           <td class="subtask">
             A szabad témaválasztás miatt a pontozás <br> a megvalósítás összetettsége alapján történik.
             <div class="note">Pontot ér:</div>
-            <div class="note">- ciklus használat (max 2x): 1-3p</div>
-            <div class="note">- GET paraméter alapján adat megjelenítés: 1-3p</div>
-            <div class="note">- űrlapos adatkezelés megvalósítás (max 2x): 1-4p</div>
-            <div class="note">- kép feltöltés: 2-5p</div>
-            <div class="note">- összetett számítás: 1-2p</div>
-            <div class="note">- fájlkezelés: 2-5p</div>
-            <div class="note">- összetett adatok tárolása session-ben: 2-5p</div>
-            <div class="note">- dátum kezelés: 1-2p</div>
+            <div class="note"> <a href="public_html/akna.php">- ciklus használat (max 2x): 1-3p</a> </div>
+            <div class="note"> <a href="public_html/akna.php"> - GET paraméter alapján adat megjelenítés: 1-3p</a></div>
+            <div class="note"> <a href="resources/beolvaso.php"> - GET paraméter alapján adat megjelenítés: 1-3p</a></div>
+            <div class="note"> <a href="public_html/jatek.php">- űrlapos adatkezelés megvalósítás (max 2x): 1-4p</a> </div>
+            <div class="note"> <a href="resources/functions.php"> - kép feltöltés: 2-5p</a></div>
+            <div class="note"> <a href="resources/functions.php"> - összetett számítás: 1-2p</a> </div>
+            <div class="note"> <a href="resources/beolvaso.php"> - fájlkezelés: 2-5p</a> </div>
+            <div class="note"> <a href="public_html/akna.php">- összetett adatok tárolása session-ben: 2-5p</a> </div>
+            <div class="note"> <a href="resources/functions.php"> - dátum kezelés: 1-2p </a> </div>
             <div class="note">- string műveletek: 1-2p</div>
-            <div class="note">- belépéshez kötött funkció: 1-2p</div>
-            <div class="note">- kivételkezelés: 1-2p</div>
+            <div class="note"> <a href="public_html/jatek.php">- belépéshez kötött funkció: 1-2p</a> </div>
+            <div class="note"> <a href="public_html/login.php"> - kivételkezelés: 1-2p</a></div>
             <div class="note">- menetkövetés letiltott sütikkel is: 5p</div>
           </td>
           <td>24</td><td></td><td></td>
@@ -295,10 +297,10 @@
             <i>Megvalósítás minősége és átláthatósága</i>
             <div class="note">Az alábbiakból lehet összeszedni:</div>
             <div class="note">- objektum orientáltság használata: 1-4p</div>
-            <div class="note">- függvények használata: 1-2p</div>
+            <div class="note"><a href="resources/functions.php">- függvények használata: 1-2p</a> </div>
             <div class="note">- kód ismétlések elkerülése: 1-2p</div>
             <div class="note">- logikusan, fájlokba szervezett kód: 1p</div>
-            <div class="note">- CSS betöltése külön fájlból: 1p</div>
+            <div class="note"><a href="resources/templates/header.php">- CSS betöltése külön fájlból: 1p</a> </div>
           </td>
           <td>5</td><td></td><td></td>
         </tr>

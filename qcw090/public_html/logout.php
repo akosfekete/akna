@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
 session_start();
 
 session_unset();

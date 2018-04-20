@@ -1,5 +1,5 @@
 <?php 
-include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     $felhasznalo_file = null;
     $pontfile = null;
     if(file_exists(FILES_PATH."/felhasznalok.csv")) {
@@ -13,7 +13,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     $pontok = [];
     $toplista = [];
     $usernevek = ["placeholder"];
-    $pontszam = 0; //"Még nem játszott";
+    $uname = null;
+    $pontszam = 0;
 
     function topSort($toplista) {
         for($i = 0; $i<count($toplista); $i++) {
@@ -61,29 +62,19 @@ include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     }
     $rpontok = array_reverse($pontok);
 
-    if(isset($_SESSION['felhasznalonev'])) {
-        if(isset($_GET['felhasznalonev'])) {
-            $felhasznalo = findUser($_GET['felhasznalonev'], $adatok);
-            $pontszam = getPontszam($_GET['felhasznalonev'], $pontok);
-            $uname = $_GET["felhasznalonev"];
-        }
-        else {
-            $felhasznalo = findUser($_SESSION['felhasznalonev'], $adatok);
-            $pontszam = getPontszam($_SESSION['felhasznalonev'], $pontok);
-            $uname = $_SESSION['felhasznalonev'];
-        }
-        
-        $profilkep = "img/default_user.png";
-        $profilkep = glob("profilkepek/$uname.*") == FALSE ? $profilkep : glob("profilkepek/$uname.*")[0];
-    }
-    elseif(isset($_GET['felhasznalonev'])) {
+    
+    if(isset($_GET['felhasznalonev'])) {
         $felhasznalo = findUser($_GET['felhasznalonev'], $adatok);
         $pontszam = getPontszam($_GET['felhasznalonev'], $pontok);
-
         $uname = $_GET["felhasznalonev"];
-        $profilkep = "img/default_user.png";
-        $profilkep = glob("profilkepek/$uname.*") == FALSE ? $profilkep : glob("profilkepek/$uname.*")[0];
     }
+    elseif(isset($_SESSION['felhasznalonev'])) {
+    
+        $felhasznalo = findUser($_SESSION['felhasznalonev'], $adatok);
+        $pontszam = getPontszam($_SESSION['felhasznalonev'], $pontok);
+        $uname = $_SESSION['felhasznalonev'];
+    }
+    $profilkep = glob("profilkepek/$uname.*") == FALSE ? "img/default_user.png" : glob("profilkepek/$uname.*")[0];
 
     foreach($rpontok as $p) {
         foreach($adatok as $a) {
@@ -95,8 +86,6 @@ include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     }
     $toplista = topSort($toplista);
     
-    
-
     !is_null($felhasznalo_file) ? fclose($felhasznalo_file) : 1;
     !is_null($pontfile) ? fclose($pontfile) : 1;
 ?>

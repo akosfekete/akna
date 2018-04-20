@@ -1,7 +1,7 @@
-﻿<?php include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php"); ?>
+﻿<?php require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php"); ?>
 <?php include_once(TEMPLATES_PATH."/header.php"); ?>
 
-            <div class="fooldal" id="gombok">
+                    <div class="fooldal" id="gombok">
                         <a href="jatek.php">játék</a>
                         <a href="leiras.php">leírás</a>
                         <a href="toplista.php">toplista</a>

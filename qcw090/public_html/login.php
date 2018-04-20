@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     $error = null;
     if(file_exists(FILES_PATH."/felhasznalok.csv")) {
         $felhasznalo_file = fopen(FILES_PATH."/felhasznalok.csv", "r");
@@ -62,12 +62,6 @@ if(isset($_SESSION['felhasznalonev'])) {
 }
 
 include_once(TEMPLATES_PATH."/header.php");
-
-if(isset($_SESSION['felhasznalonev'])) { // ez így nagyon ronda, át kell írni teljesen.
-    echo "<h2>Bejelentkezés</h2>\n";
-    echo "<p>Név: $uname</p>\n";
-    echo "<p><a href=\"logout.php\">Kijelentkezés</a></p>\n"; // kellene egy session változót módosítani, ami miatt a header-ben lesz logout is.
-}
 ?>
 
     <form action="login.php" method="post">

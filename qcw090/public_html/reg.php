@@ -4,7 +4,7 @@
         header("Location: profil.php");
         die();
     }
-    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
     include_once(RESOURCES_PATH."/beolvaso.php"); 
     include_once(RESOURCES_PATH."/functions.php"); 
     $error = null;
@@ -18,7 +18,6 @@
         }
         $felhasznalok = ["placeholder"];
         $emailek = [];
-        //$i=0;
         $asor = fgets($felhasznalo_file);
         while(!feof($felhasznalo_file)) {
             array_push($emailek, explode(',',$asor)[0]);
@@ -28,11 +27,8 @@
         while(!feof($felhasznalo_file)) {
             $asor = fgets($felhasznalo_file);
             if(count(explode(',',$asor)) == 1) {
-                //fgets($felhasznalo_file);
-                //echo "szar<br>";
                 continue;    
             }
-            //echo "nemszar<br>";
             array_push($felhasznalok, explode(',',$asor)[1]);
             
         }
@@ -48,7 +44,7 @@
                 $error = "Már van ilyen e-mail cím.";
             }
             elseif(array_search($uname, $felhasznalok)) {
-                $error = "Már van ilyen nevű felhasználó."; // azért szar, mert 0 == FALSE. Az első elemnek placeholdernek kell lennie.
+                $error = "Már van ilyen nevű felhasználó.";
             }
             elseif($_POST["jelszoism"] != $pass) {
                 $error = "A jelszavak nem egyeznek.";

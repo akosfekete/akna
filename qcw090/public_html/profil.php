@@ -1,15 +1,18 @@
 <?php
     session_start();
-    include_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
-    include_once(RESOURCES_PATH."/functions.php");
-    if(isset($_POST["foo"])) {
+    require_once($_SERVER['DOCUMENT_ROOT']."/qcw090/constants.php");
+    require_once(RESOURCES_PATH."/functions.php");
+    $error = null;
+    if(isset($_POST["kep"])) {
         if(file_exists($_FILES["profilkep"]["tmp_name"])) {
-            imageUpload($_SESSION['felhasznalonev']);
-            header("Location: profil.php");
+            $error = imageUpload($_SESSION['felhasznalonev']);
+            if($error == null) {
+                header("Location: profil.php");
+            }
         }
     }
     include_once(TEMPLATES_PATH."/header.php");  
-    include_once(RESOURCES_PATH."/beolvaso.php"); 
+    require_once(RESOURCES_PATH."/beolvaso.php"); 
 ?>
     <div class="profil">
         <h1><?= $felhasznalo[1] ?> profilja</h1>
